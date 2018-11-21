@@ -22,16 +22,25 @@ const ISSPositionType = new GraphQLObjectType({
 const ISSPassoverType = new GraphQLObjectType({
   name: 'ISSPass',
   fields: () => ({
-    request: { type: ResponseType },
-    response: { type: ResponseType }
+    request: { type: RequestType },
+    response: { type: new GraphQLList(ResponseType) }
   })
 });
 
+//Request
+const RequestType = new GraphQLObjectType({
+  name: 'Request',
+  fields: () => ({
+    altitude: { type: GraphQLInt }
+  })
+});
+
+//Response
 const ResponseType = new GraphQLObjectType({
   name: 'Response',
   fields: () => ({
-    altitude: { type: new GraphQLList(GraphQLInt) },
-    duration: { type: GraphQLInt }
+    duration: { type: GraphQLInt },
+    risetime: { type: GraphQLInt }
   })
 });
 
@@ -48,24 +57,12 @@ const RootQuery = new GraphQLObjectType({
           .then(res => res.data);
       }
     },
-
-    infos: {
+    isspassovers: {
       type: ISSPassoverType,
       resolve(parent, args) {
         return axios
           .get(
-            'http://api.open-notify.org/iss-pass.json?lat=45.0&lon=-122.3&alt=20&n=2'
-          )
-          .then(res => res.data);
-      }
-    },
-
-    requests: {
-      type: ResponseType,
-      resolve(parent, args) {
-        return axios
-          .get(
-            'http://api.open-notify.org/iss-pass.json?lat=45.0&lon=-122.3&alt=20&n=2'
+            'http://api.open-notify.org/iss-pass.json?lat=45.0&lon=-122.3&alt=20&n=10'
           )
           .then(res => res.data);
       }
