@@ -46,6 +46,8 @@ const ResponseType = new GraphQLObjectType({
 
 //Resolvers
 
+//http://open-notify.org/Open-Notify-API/ Our API benefactor
+
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
   fields: {
@@ -59,10 +61,17 @@ const RootQuery = new GraphQLObjectType({
     },
     isspassovers: {
       type: ISSPassoverType,
+      args: {
+        lat: { type: GraphQLFloat },
+        long: { type: GraphQLFloat }
+      },
       resolve(parent, args) {
         return axios
+
           .get(
-            'http://api.open-notify.org/iss-pass.json?lat=45.0&lon=-122.3&alt=20&n=10'
+            `http://api.open-notify.org/iss-pass.json?lat=${args.lat}&lon=-${
+              args.long
+            }&alt=20&n=10`
           )
           .then(res => res.data);
       }
