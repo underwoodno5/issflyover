@@ -52,7 +52,11 @@
     padding: 20px;
   }
 
+  .MuiInputBase-input-46 {
+    width: 100px !important;
+  }
+
   h4 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 }

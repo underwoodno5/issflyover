@@ -1,6 +1,13 @@
 import React from 'react';
 
 export default function Passover({ passover: { duration, risetime } }) {
+  function addZero(i) {
+    if (i < 10) {
+      i = '0' + i;
+    }
+    return i;
+  }
+
   function timeConverter(UNIX_timestamp) {
     var a = new Date(UNIX_timestamp * 1000);
     var months = [
@@ -20,11 +27,9 @@ export default function Passover({ passover: { duration, risetime } }) {
     var year = a.getFullYear();
     var month = months[a.getMonth()];
     var date = a.getDate();
-    var hour = a.getHours();
-    var min = a.getMinutes();
-    var sec = a.getSeconds();
-    var time =
-      date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+    var hour = addZero(a.getHours());
+    var min = addZero(a.getMinutes());
+    var time = date + ' ' + month + ' ' + year + ' at ' + hour + ':' + min;
     return time;
   }
   var timeVisible = Math.floor(duration / 60);

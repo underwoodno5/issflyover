@@ -37,11 +37,19 @@ export class Locationform extends Component {
         <h4 className='info'>
           Enter your longitude and latitude and see the date and time for the
           next 10 passes of the International Space Station.
+          <br />
+          <br />
+          Find your lat/long here:
+          <a href='https://www.latlong.net/' target='_blank'>
+            {' '}
+            latlong.net
+          </a>
+          .
         </h4>
 
         <form className='container formbox' noValidate autoComplete='off'>
           <TextField
-            label='Longitude'
+            label='Latitude'
             onChange={this.handleLat}
             onKeyDown={this.handleKeyDown}
             className='textField'
@@ -49,7 +57,7 @@ export class Locationform extends Component {
             margin='normal'
           />
           <TextField
-            label='Latitude'
+            label='Longitude'
             onChange={this.handleLong}
             onKeyDown={this.handleKeyDown}
             className='textField'
