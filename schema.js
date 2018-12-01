@@ -66,12 +66,11 @@ const RootQuery = new GraphQLObjectType({
         long: { type: GraphQLFloat }
       },
       resolve(parent, args) {
+        args.lat = 45;
+        args.long = 45;
         return axios
-
           .get(
-            `http://api.open-notify.org/iss-pass.json?lat=${args.lat}&lon=-${
-              args.long
-            }&alt=20&n=10`
+            `http://api.open-notify.org/iss-pass.json?lat=45&lon=-45&alt=20&n=10`
           )
           .then(res => res.data);
       }

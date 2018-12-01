@@ -1,0 +1,58 @@
+.card {
+  background-color: #375a7f;
+  width: 70%;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.textfield {
+  color: white;
+}
+
+.MuiFormLabel-root-16 {
+  color: rgba(255, 251, 251, 0.54) !important;
+}
+
+.MuiInput-underline-27:after {
+  border-bottom: 2px solid #ffffff !important;
+}
+
+.MuiInputBase-input-46 {
+  color: white !important;
+}
+
+.formbox {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.info {
+  padding: 20px;
+}
+
+.submit {
+  display: block;
+  margin: 40px auto 0 auto;
+}
+
+.passheader {
+  margin: 45px auto 0 auto;
+}
+
+@media only screen and (max-width: 1000px) {
+  .card {
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+}
