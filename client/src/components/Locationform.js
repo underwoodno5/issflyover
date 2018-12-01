@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
-import { Link } from 'react-router-dom';
 
 export class Locationform extends Component {
   //sets initial states so we con't get a component error
@@ -33,9 +32,6 @@ export class Locationform extends Component {
   render() {
     const { long } = this.state;
     const { lat } = this.state;
-    function handleClick() {
-      window.location = `/passovers/${this.state.lat}:${this.state.long}`;
-    }
     return (
       <div>
         <h4 className='info'>
@@ -51,7 +47,6 @@ export class Locationform extends Component {
             className='textField'
             value={lat}
             margin='normal'
-            className='input'
           />
           <TextField
             label='Latitude'
@@ -60,7 +55,6 @@ export class Locationform extends Component {
             className='textField'
             value={long}
             margin='normal'
-            className='input'
           />
         </form>
       </div>
