@@ -8,7 +8,9 @@ const {
   GraphQLSchema
 } = require('graphql');
 
-//Position
+//----------SCHEMAS--------\\
+
+//---Position
 const ISSPositionType = new GraphQLObjectType({
   name: 'ISS',
   fields: () => ({
@@ -18,7 +20,7 @@ const ISSPositionType = new GraphQLObjectType({
   })
 });
 
-//passover
+//---Passover
 const ISSPassoverType = new GraphQLObjectType({
   name: 'ISSPass',
   fields: () => ({
@@ -27,7 +29,6 @@ const ISSPassoverType = new GraphQLObjectType({
   })
 });
 
-//Request
 const RequestType = new GraphQLObjectType({
   name: 'Request',
   fields: () => ({
@@ -35,7 +36,6 @@ const RequestType = new GraphQLObjectType({
   })
 });
 
-//Response
 const ResponseType = new GraphQLObjectType({
   name: 'Response',
   fields: () => ({
@@ -44,7 +44,39 @@ const ResponseType = new GraphQLObjectType({
   })
 });
 
-//Resolvers
+//---Location
+
+const GeocodeType = new GraphQLObjectType({
+  name: 'Geocode',
+  fields: () => ({
+    results: { type: new GraphQLList(ResultsType) }
+  })
+});
+
+const ResultsType = new GraphQLObjectType({
+  name: 'Results',
+  fields: () => ({
+    providedLocation: { type: GraphQLString },
+    locations: { type: new GraphQLList(LocationsType) }
+  })
+});
+
+const LocationsType = new GraphQLObjectType({
+  name: 'Location',
+  fields: () => ({
+    latLng: { type: LatlngType }
+  })
+});
+
+const LatlngType = new GraphQLObjectType({
+  name: 'LatLng',
+  fields: () => ({
+    lat: { type: GraphQLFloat },
+    lng: { type: GraphQLFloat }
+  })
+});
+
+//-----Resolvers-----\\
 
 //http://open-notify.org/Open-Notify-API/ Our API benefactor
 
@@ -66,11 +98,27 @@ const RootQuery = new GraphQLObjectType({
         long: { type: GraphQLFloat }
       },
       resolve(parent, args) {
-        args.lat = 45;
-        args.long = 45;
         return axios
           .get(
-            `http://api.open-notify.org/iss-pass.json?lat=45&lon=-45&alt=20&n=10`
+            `http://api.open-notify.org/iss-pass.json?lat=${args.lat}&lon=${
+              args.long
+            }&alt=20&n=10`
+          )
+          .then(res => res.data);
+      }
+    },
+    geocode: {
+      type: GeocodeType,
+      args: {
+        location: { type: GraphQLString }
+      },
+      resolve(parent, args) {
+        return axios
+          .get(
+            `https://open.mapquestapi.com/geocoding/v1/address?key=6IMng1btF4EmjAPceKCxtMmFx6asEZG0&inFormat=kvp&outFormat=json&location=${
+              args.location
+            }&thumbMaps=false`
+            //`https://open.mapquestapi.com/geocoding/v1/address?key=6IMng1btF4EmjAPceKCxtMmFx6asEZG0&inFormat=kvp&outFormat=json&location=st%20johns%20newfoundland&thumbMaps=false`
           )
           .then(res => res.data);
       }

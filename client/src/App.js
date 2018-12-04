@@ -3,7 +3,7 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Passovers from './components/Passovers';
-import Locationform from './components/Locationform';
+import Geocode from './components/Geocodeform';
 import './App.css';
 import logo from './earthflag.png';
 
@@ -23,8 +23,9 @@ class App extends Component {
               style={{ width: 300, display: 'block', margin: 'auto' }}
             />
             <div className='card'>
-              <Route exact path='/' component={Locationform} />
-              <Route exact path='/passovers/:lat:long' component={Passovers} />
+              <Route exact path='/' component={Geocode} />
+              <Route exact path='/passovers/:lat/:long' component={Passovers} />
+              <Route exact path='/geo' component={Geocode} />
             </div>
           </div>
         </Router>

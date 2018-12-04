@@ -25,13 +25,15 @@ export class Locationform extends Component {
   handleKeyDown = e => {
     if (e.key === 'Enter') {
       //this.props.submit(this.state.nlong, this.state.nat);
-      window.location = `/passovers/${this.state.lat}:${this.state.long}`;
+      window.location = `/passovers/${this.state.lat}:/${this.state.long}`;
     }
   };
 
   render() {
     const { long } = this.state;
     const { lat } = this.state;
+    console.log(lat);
+    console.log(long);
     return (
       <div>
         <h4 className='info'>
@@ -40,7 +42,11 @@ export class Locationform extends Component {
           <br />
           <br />
           Find your lat/long here:
-          <a href='https://www.latlong.net/' target='_blank'>
+          <a
+            href='https://www.latlong.net/'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             {' '}
             latlong.net
           </a>

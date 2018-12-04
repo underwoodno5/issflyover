@@ -4,7 +4,9 @@
   margin: 50px auto;
   padding: 20px;
 }
-
+.secondarycolor {
+  color: #00bc8c;
+}
 .textfield {
   color: white;
 }
@@ -39,6 +41,15 @@
   margin: 45px auto 0 auto;
 }
 
+.latlng {
+  text-align: center;
+}
+
+.btn {
+  display: block;
+  margin: auto;
+}
+
 @media only screen and (max-width: 1000px) {
   .card {
     width: 100%;
@@ -53,10 +64,10 @@
   }
 
   .MuiInputBase-input-46 {
-    width: 100px !important;
+    width: 80px !important;
   }
 
   h4 {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
 }
