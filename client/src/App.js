@@ -17,11 +17,13 @@ class App extends Component {
       <ApolloProvider client={client}>
         <Router>
           <div className='container'>
-            <img
-              src={logo}
-              alt='World Flag'
-              style={{ width: 300, display: 'block', margin: 'auto' }}
-            />
+            <div className='flag-container'>
+              <img
+                src={logo}
+                alt='World Flag'
+                style={{ width: 300, display: 'block', margin: 'auto' }}
+              />
+            </div>
             <div className='card'>
               <Route exact path='/' component={Geocode} />
               <Route exact path='/passovers/:lat/:long' component={Passovers} />

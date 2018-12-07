@@ -50,6 +50,9 @@
   margin: auto;
 }
 
+.flag {
+}
+
 @media only screen and (max-width: 1000px) {
   .card {
     width: 100%;
@@ -63,11 +66,14 @@
     padding: 20px;
   }
 
-  .MuiInputBase-input-46 {
-    width: 80px !important;
-  }
-
   h4 {
     font-size: 0.9rem;
+  }
+  .container {
+    padding: 0;
+  }
+  .flag-container {
+    background-color: #1574f6;
+    width: 100%;
   }
 }

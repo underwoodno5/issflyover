@@ -12,3 +12,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@media screen and (max-width: 500px) {
+  body {
+    background-color: #375a7f;
+  }
+  .card {
+    border: none;
+  }
+
+  .flag {
+    width: 100%;
+  }
+}
