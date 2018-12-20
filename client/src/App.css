@@ -1,8 +1,12 @@
+body {
+  background-color: #375a7f;
+}
 .card {
   background-color: #375a7f;
   width: 70%;
   margin: 50px auto;
   padding: 20px;
+  border: none;
 }
 .secondarycolor {
   color: #00bc8c;
