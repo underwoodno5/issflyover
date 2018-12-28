@@ -20,7 +20,7 @@ class App extends Component {
             <div className='flag-container'>
               <img
                 src={logo}
-                alt='World Flag'
+                alt='World Flag designed by reddit user _Serraphim'
                 style={{ width: 300, display: 'block', margin: 'auto' }}
               />
             </div>
